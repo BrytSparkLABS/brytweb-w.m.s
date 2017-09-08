@@ -1,0 +1,386 @@
+
+<div class="modal fade" tabindex="-1" role="dialog" id="InsertLinkModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Insert Link</h4>
+      </div>
+      <div class="modal-body">
+        <p><input type="text" id="link" name="link"><button onclick="addlink()">Insert</button></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="InsertPicModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <p><input type="file" name="file" size="50" id="file" />
+<br />
+
+<img src="" width="100%" id="img">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<h1>Create Blog Article</h1>
+
+
+
+<form name="publish" method="post" action="admin/cms/portfolio/addproject.php">
+<input type="hidden" id="view" name="view" value="">
+
+<p><input type="text" name="name" placeholder="Blog Title"></p>
+
+<input type="hidden" name="place" value="2">
+
+
+</form>
+
+
+<hr>
+
+
+
+<button id="apply" class="btn btn-primary" style="margin:20px;">Apply</button>
+
+<button id="togView" class="btn btn-primary" style="margin:20px;">Code Editor</button>
+
+<div id="wysiwyg" style="margin: 20px;">
+  <button class="btn btn-default" onClick="boldIt()" ><i class="fa fa-bold"></i></button>
+  <button class="btn btn-default" onClick="italicIt()" ><i class="fa fa-italic"></i> </button>
+  <button class="btn btn-default" onClick="underlineIt()"><i class="fa fa-underline"></i></button>
+
+  <select name="selFont" onChange="doFont(this.options[this.selectedIndex].value)">
+  <option>arial</option>
+  <option>verdana</option>
+  <option>vivaldi</option>
+  </select>
+
+  <select name="selHeading" onChange="doHead(this.options[this.selectedIndex].value)">
+  <option value="<h6>">1</option>
+  <option value="<h5>">2</option>
+   <option value="<h4>">3</option>
+  <option value="<h3>">4</option>
+  <option value="<h2>">5</option>
+   <option value="<h1>">6</option>
+  </select>
+
+  <button class="btn btn-default"  onClick="doCenter()"><i class="fa fa-align-center"></i></button>
+
+      <button class="btn btn-default"  onClick="doLeft()" ><i class="fa fa-align-left"></i></button>
+
+  <button class="btn btn-default"  onClick="doRight()" ><i class="fa fa-align-right"></i></button>
+
+    <button class="btn btn-default" onclick="insertLink()"><i class="fa fa-link"></i></button>
+
+    <button class="btn btn-default"  onclick="insertPic()"><i class="fa fa-file-image-o"></i></button>
+
+  <button class="btn btn-default"  onClick="doForeCol()"><i class="glyphicon glyphicon-text-color"></i></button>
+
+
+      <button class="btn btn-default"  onClick="doBackCol()"><i class="glyphicon glyphicon-text-background"></i></button>
+
+     <button class="btn btn-default"  onClick="doRule()"><i class="glyphicon glyphicon-pencil">line</i></button>
+
+  <button class="btn btn-default"  onClick="doCode()"><i class="fa fa-code"></i></button>
+
+
+      <button class="btn btn-default"  onClick="doUndo()" value="Undo"><i class="fa fa-undo"></i></button>
+
+      <button class="btn btn-default"  onClick="doRedo()" value="Redo"><i class="fa fa-repeat"></i></button>
+
+     <button class="btn btn-default"  onClick="doCopy()" value="Copy"><i class="fa fa-copy"></i></button>
+
+
+
+  <button class="btn btn-default" onClick="doIndent()"><i class="fa fa-indent"></i></button>
+
+        <button class="btn btn-default" onClick="doOutdent()" value="Outdent"><i class="fa fa-outdent"></i></button>
+
+
+  <div  contenteditable="true" id="editor">BrytWeb Editor Loading...</div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+document.execCommand("insertBrOnReturn", false, true);
+
+  function doSaveIt(){
+  document.execCommand('save')
+  }
+  function doLink()
+  {
+  var doLink = prompt('Enter link', '');
+  if(doLink != null)
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('createlink', false, doLink);
+  }
+
+  function doHead(hType)
+  {
+  if(hType != '')
+  {
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('formatblock', false, hType);
+  doFont(selFont.options[selFont.selectedIndex].value);
+  }
+  }
+
+  function doFont(fName)
+  {
+  if(fName != '')
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('fontname', false, fName);
+  }
+
+
+  function doFont(fName)
+  {
+  if(fName != '')
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('fontname', false, fName);
+  }
+
+
+  function doCenter()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('justifycenter', false, null);
+  }
+
+  function doLeft()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('justifyleft', false, null);
+  }
+
+  function doRight()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('justifyright', false, null);
+  }
+
+  function doCode()
+  {
+  var doCode = prompt('Enter code', '');
+  if(doCode != null)
+  document.execCommand('code', false, doCode);
+  }
+
+
+  function doRule()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('inserthorizontalrule', false, null);
+  }
+
+  function doUndo()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('undo', false, null);
+  }
+
+  function doRedo()
+  {
+
+  document.execCommand('redo', false, null);
+  }
+
+  function doIndent()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('indent', false, null);
+  }
+  function doOutdent()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('outdent', false, null);
+  }
+
+
+
+  function doCopy()
+  {
+  document.execCommand('copy', false, null);
+  }
+
+
+  function selOn(ctrl)
+  {
+  ctrl.style.borderColor = '#000000';
+  ctrl.style.backgroundColor = '#B5BED6';
+  ctrl.style.cursor = 'hand';
+  }
+
+
+  function underlineIt()
+
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('underline', false, null);
+  }
+
+
+  function boldIt()
+
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('bold', false, null);
+  }
+  function italicIt()
+  {
+    document.execCommand("styleWithCSS", false, true);
+  document.execCommand('italic', false, null);
+  }
+  function doForeCol()
+  {
+
+  var fCol = prompt('Enter foreground color', '');
+  if(fCol != null)
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('forecolor', false, fCol);
+  }
+
+  function doBackCol()
+  {
+
+  var fCol = prompt('Enter background color', '');
+  if(fCol != null)
+  document.execCommand("styleWithCSS", false, true);
+  document.execCommand('backcolor', false, fCol);
+  }
+
+
+
+
+
+
+
+
+
+
+
+function insertPic(){
+
+$('#InsertPicModal').modal('show');
+
+};
+
+
+
+var uploadfiles = document.querySelector('#file');
+uploadfiles.addEventListener('change', function () {
+
+
+var files = this.files;
+for(var i=0; i < files.length; i++){
+
+
+
+uploadFile(this.files[i]);
+// call the function to upload the file
+}
+}, false);
+
+function uploadFile(file){
+
+var url = 'admin/uploader.php';
+var xhr = new XMLHttpRequest();
+var fd = new FormData();
+
+xhr.open("POST", url, true);
+xhr.onreadystatechange = function() {
+if (xhr.readyState == 4 && xhr.status == 200) {
+// Every thing ok, file uploaded
+
+document.execCommand("styleWithCSS", false, true);
+document.execCommand('insertImage', false,  xhr.responseText );
+$('#img').attr('src', xhr.responseText)
+
+
+console.log(xhr.responseText); // handle response.
+}
+};
+fd.append("upload_file", file);
+xhr.send(fd);
+
+
+
+$('#InsertPicModal').modal('hide');
+
+
+
+
+
+}
+
+
+
+
+function insertLink(){
+
+$('#InsertLinkModal').modal('show');
+
+};
+function addlink(){
+$('#InsertLinkModal').modal('hide');
+  var link = document.getElementById('link').value;
+  document.execCommand('createLink', false, link);
+};
+
+$('#apply').click(function(){
+
+document.getElementById('view').value = document.getElementById('editor').innerHTML;
+
+  brytwebPublish();
+});
+
+function brytwebPublish()
+{
+document.publish.submit();
+}
+
+$('#togView').click(function(){
+
+
+var site = document.getElementById('editor').innerHTML;
+var codeB ="<textarea style='width:100%;height:80%' id='coder' name='coder'>"+site+"</textarea>";
+
+$("div#renderDiv").load('admin/cms/portfolio/portfolioCode.html', 2000, function() {
+// callback after load completes
+
+
+$('#viewer').html(site);
+
+$('#editor').html(codeB);
+});
+
+
+
+});
+
+
+</script>

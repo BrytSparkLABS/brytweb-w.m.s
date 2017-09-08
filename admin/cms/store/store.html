@@ -1,0 +1,346 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="procesingModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-spinner fa-pulse"></i>Done!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="errorModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <h2>oops...there was an error. try again,<small> if the problem persist it
+        is liekly that (1)there is no netowrk connection.(2)That there is a problem with
+        your installation in that case file a support request bellow</small></h2>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="InsertPicModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <p><input type="file" name="file" size="50" id="file" />
+<br />
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="InsertPicsModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Item Photo's<small> max is 5 photo's per item</small></h4>
+      </div>
+      <div class="modal-body">
+        <p><input type="file" name="filex" size="50" id="filex" />
+<br />
+
+<div style="width:100%">
+<img src="" class="img img-responsive img-thumbnail" style="width:100px" id="img1">
+
+<img src="" class="img img-responsive img-thumbnail" style="width:100px" id="img2">
+
+
+<img src="" class="img img-responsive img-thumbnail" style="width:100px" id="img3">
+
+
+<img src="" class="img img-responsive img-thumbnail" style="width:100px" id="img4">
+
+<img src="" class="img img-responsive img-thumbnail" style="width:100px" id="img5"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+<h1>your online shop manager</h1>
+
+<div class="row">
+  <div class="col-md-7">
+
+<button class="btn btn-success" id="manage_items">Manage Items</button>
+
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Create Item</h2>
+<p><input type="text" id="itemname" placeholder="Item Name"></p>
+<p><input type="text" id="itemcost" placeholder="Item Cost"></p>
+<p><textarea cols="30" rows="10" id="itemdescription" placeholder="Item Description"></textarea></p>
+
+<hr>
+<p>
+
+  <button class="btn btn-lg btn-primary"  onclick="insertPic()"><i class="fa fa-file-image-o"></i>Upload Item Cover Photo</button></p>
+
+<img src="" style="width:400px" id="coverimgv" class="img img-responsive img-thumbnail"/>
+
+<input type="hidden" id="coverimg" value="">
+<hr>
+
+<p>
+
+  <button class="btn btn-lg btn-primary"   onclick="insertPics()"><i class="fa fa-file-image-o"></i>Upload Item Photo's</button>
+
+<input type="hidden" id="itemimg1" value="">
+<input type="hidden" id="itemimg2" value="">
+<input type="hidden" id="itemimg3" value="">
+<input type="hidden" id="itemimg4" value="">
+<input type="hidden" id="itemimg5" value="">
+<hr>
+
+<button id="addItem" class="btn btn-lg btn-success">Add Item</button>
+
+
+
+
+</div>
+</div>
+<script>
+  function insertPic(){
+
+  $('#InsertPicModal').modal('show');
+
+  };
+
+
+
+  var uploadfiles = document.querySelector('#file');
+  uploadfiles.addEventListener('change', function () {
+
+
+  var files = this.files;
+  for(var i=0; i < files.length; i++){
+
+
+
+  uploadFile(this.files[i]);
+  // call the function to upload the file
+  }
+  }, false);
+
+  function uploadFile(file){
+
+  var url = 'admin/uploader.php';
+  var xhr = new XMLHttpRequest();
+  var fd = new FormData();
+
+  xhr.open("POST", url, true);
+  xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+  // Every thing ok, file uploaded
+
+  document.getElementById('coverimg').value = xhr.responseText;
+  document.getElementById('coverimgv').src = xhr.responseText;
+
+
+
+  console.log(xhr.responseText); // handle response.
+  }
+  };
+  fd.append("upload_file", file);
+  xhr.send(fd);
+
+
+
+  $('#InsertPicModal').modal('hide');
+
+
+
+
+
+  }
+var counter = 0;
+  function insertPics(){
+
+  $('#InsertPicsModal').modal('show');
+
+  };
+
+
+
+  var uploadfiles = document.querySelector('#filex');
+  uploadfiles.addEventListener('change', function () {
+
+counter += 1;
+
+  var files = this.files;
+  for(var i=0; i < files.length; i++){
+
+
+
+  uploadFiles(this.files[i]);
+  // call the function to upload the file
+  }
+  }, false);
+
+  function uploadFiles(file){
+
+  var url = 'admin/uploader.php';
+  var xhr = new XMLHttpRequest();
+  var fd = new FormData();
+
+  xhr.open("POST", url, true);
+  xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+  // Every thing ok, file uploaded
+
+if (counter == 1){
+  document.getElementById('img1').src = xhr.responseText;
+  document.getElementById('itemimg1').value = xhr.responseText;
+}
+if (counter == 2){
+  document.getElementById('img2').src = xhr.responseText;
+document.getElementById('itemimg2').value = xhr.responseText;
+
+}
+if (counter == 3){
+  document.getElementById('img3').src = xhr.responseText;
+  document.getElementById('itemimg3').value = xhr.responseText;
+}
+if (counter == 4){
+  document.getElementById('img4').src = xhr.responseText;
+document.getElementById('itemimg4').value = xhr.responseText;
+
+}
+if (counter == 5){
+
+
+  document.getElementById('img5').src = xhr.responseText;
+
+  document.getElementById('itemimg5').value = xhr.responseText;
+}
+
+  console.log(xhr.responseText); // handle response.
+  }
+  };
+  fd.append("upload_file", file);
+  xhr.send(fd);
+
+
+
+
+
+
+
+
+  }
+
+
+$("#addItem").click(function(){
+
+ $("#procesingModal").modal('show');
+
+var item_name = document.getElementById('itemname').value
+var item_cost = document.getElementById('itemcost').value
+var item_description = document.getElementById('itemdescription').value
+
+var item_coverImg = document.getElementById('coverimg').value
+
+var item_Img1 = document.getElementById('itemimg1').value
+var item_Img2 = document.getElementById('itemimg2').value
+var item_Img3 = document.getElementById('itemimg3').value
+var item_Img4 = document.getElementById('itemimg4').value
+var item_Img5 = document.getElementById('itemimg5').value
+
+$.post("admin/cms/store/store.php",{name:item_name, cost: item_cost, description:item_description, cover: item_coverImg, img1:item_Img1, img2: item_Img2,img3:item_Img3, img4: item_Img4,img5: item_Img5})
+.done(function(data, status, xhr){
+console.log('succes:' + data );
+$("#procesingModal").modal('hide');
+})
+.fail(function(data, status, xhr){
+// Runs on failure
+console.log(data);
+
+ $("#errorModal").modal('show');
+})
+.always(function(data, status, xhr){
+// Both success and failure
+console.log(data);
+});
+
+
+});
+
+
+
+$('#manage_items').click(function(){
+
+$("div#renderDiv").load('admin/cms/store/store_items.php');
+
+
+
+});
+
+
+</script>

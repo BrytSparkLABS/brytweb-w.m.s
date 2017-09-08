@@ -1,0 +1,87 @@
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="procesingModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-spinner fa-pulse"></i>Done!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="errorModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Oops...there was an error. please try again.<br/>
+            <small> if the problem persists, it is likely that:<br/>
+               (1)there is no netowrk connection.<br/>
+               (2)That there is a problem with your installation in that case
+               please contact us at <a href="http://www.brytweb.com">Brytweb.com</a></small></h2>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="container" style="padding-top:100px;">
+  <div class="row">
+
+
+<p><label for="title">Title</label><input type="text" id="title" name="title"></p>
+<p><label for="decription">Description</label><input type="text" id="description" name="description"></p>
+<button id="apply" class="btn btn-primary">ADD</button>
+
+</div>
+</div>
+
+
+
+<script>
+
+  $('#apply').click(function(){
+
+
+  $("#procesingModal").modal('show');
+  var title = document.getElementById('title').value;
+  var description = document.getElementById('description').value;
+  $.post("admin/cms/seo/seo.php",{title:title, description:description})
+  .done(function(data, status, xhr){
+  console.log('succes:' + data );
+  $("#procesingModal").modal('hide');
+  })
+  .fail(function(data, status, xhr){
+  // Runs on failure
+  console.log(data);
+  $("#procesingModal").modal('hide');
+   $("#errorModal").modal('show');
+  })
+  .always(function(data, status, xhr){
+  // Both success and failure
+  console.log(data);
+  });
+
+
+
+
+});
+
+
+</script>

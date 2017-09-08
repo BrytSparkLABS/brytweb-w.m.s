@@ -1,0 +1,102 @@
+<h2>Please enter your details</h2>
+
+<p><input type="text" id="name" name="name" class="input-text" placeholder="Name"></p>
+<p><input type="text" id="email" name="email" class="input" placeholder="Email"></p>
+<p><input type="text" id="phone" name="phone" class="input" placeholder="Phone"></p>
+  <h3>Delivery Address</h3>
+<p><input type="text" id="street" name="name"class="" placeholder="Street"></p>
+<p><input type="text" id="suburb" name="name"class="" placeholder="Suburb"></p>
+<p><input type="text" id="poscode" name="name"class="" placeholder="Postal code"></p>
+  <p><input type="text" id="PaymentMethod" name="PaymentMethod"class="" placeholder="PaymentMethod"></p>
+<button id="processOrder" class="btn btn-primary">
+
+ Complete & Pay Now<br/>
+  <i class="fa fa-cc-visa"></i>
+  <i class="fa fa-cc-mastercard"></i>
+  <i class="fa fa-cc-amex"></i>
+  <i class="fa fa-cc-discover"></i>
+</button>
+
+<script>
+
+   $('#processOrder').click(function() {
+    console.log('start')
+ var Name = document.getElementById('name').value;
+ var Email = document.getElementById('email').value;
+ var Phone = document.getElementById('phone').value;
+
+ var Street = document.getElementById('street').value;
+ var Suburb = document.getElementById('suburb').value;
+ var Poscode =document.getElementById('poscode').value;
+ var PaymentMethod =document.getElementById('PaymentMethod').value;
+
+ var orders ='<input type="hidden" id="sales" name="sales" value="';
+var carton = localStorage.getItem('cart');
+var total = 0;
+carton = JSON.parse(carton)
+
+
+for(i = 0; i < carton.Order.length; i++){
+
+orders += 'qty: '+ i +'| item: '+ carton.Order[i].name +'| cost: '+ carton.Order[i].cost +' \n';
+
+
+total += carton.Order[i].cost;
+
+}
+
+orders += '"/>';
+
+
+
+  console.log(orders);
+
+
+
+
+
+
+ $.post("admin/cms/processorder.php",{name:Name, email: Email, phone:Phone, street:Street, suburb:Suburb, postcode:Poscode, paymeth:PaymentMethod, order:orders})
+.done(function(data, status, xhr){
+console.log('succes:' + data );
+$("#procesingModal").modal('hide');
+$('#cartModal').modal('hide');
+$("#thanksModal").modal('show');
+})
+.fail(function(data, status, xhr){
+// Runs on failure
+console.log(data);
+$("#procesingModal").modal('hide');
+ $("#errorModal").modal('show');
+})
+.always(function(data, status, xhr){
+// Both success and failure
+console.log(data);
+});
+
+
+$.post("../../../pg_paywebv2_php_request.php",{name:Name, email: Email, phone:Phone, street:Street, suburb:Suburb, postcode:Poscode, paymeth:PaymentMethod, order:orders})
+.done(function(data, status, xhr){
+console.log('succes:' + data );
+$("#procesingModal").modal('hide');
+$('#cartModal').modal('hide');
+$("#thanksModal").modal('show');
+})
+.fail(function(data, status, xhr){
+// Runs on failure
+console.log(data);
+$("#procesingModal").modal('hide');
+ $("#errorModal").modal('show');
+})
+.always(function(data, status, xhr){
+// Both success and failure
+console.log(data);
+});
+
+
+
+     });
+
+
+
+</script>

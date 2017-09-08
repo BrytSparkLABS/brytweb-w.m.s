@@ -1,0 +1,62 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="sendModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Sending Message</h4>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-spinner fa-pulse"></i>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<div class='row'>
+  <div class='col-md-5'>
+    <h1>Contact Us</h1>
+
+      <p><input type='text' id='name' name='name' placeholder='Your Name' required></p>
+      <p><textarea id='msg' name='message' placeholder='Your Message' cols='50' rows='10' required></textarea></p>
+      <p><input type='email' id='email' name='email' placeholder='Your Email' required></p>
+      <button  onclick="send()" class="btn btn-success">Send</button>
+
+    </div>
+
+      </div>
+      <script>
+
+         function send()
+         {
+         //document.publish.submit();
+
+         $("#sendModal").modal('show');
+         var name = document.getElementById('name').value;
+         var email = document.getElementById('email').value;
+         var msg = document.getElementById('msg').value;
+
+         $.post("subscribe.php",{name:name, email:email, msg:msg})
+         .done(function(data, status, xhr){
+         console.log('succes:' + data );
+         $("#sendModal").modal('hide');
+         })
+         .fail(function(data, status, xhr){
+         // Runs on failure
+         console.log(data);
+         $("#procesingModal").modal('show');
+         })
+         .always(function(data, status, xhr){
+         // Both success and failure
+         console.log(data);
+         });
+
+       }
+        </script>

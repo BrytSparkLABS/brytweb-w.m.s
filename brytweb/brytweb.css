@@ -1,0 +1,80 @@
+
+.trolley{
+position:absolute;
+right:3em;
+
+}
+
+
+
+@media (min-width: 900px){
+.trolley{
+position:absolute;
+right:3em;
+top:0.5em;
+}
+
+}
+
+
+
+
+.footer{
+position:relative;
+bottom:0px;
+display: flex;
+flex-wrap: wrap;
+background-color: #545765;
+padding:30px
+}
+.footer > * {
+flex: 0 0 25%;
+}
+
+.footer-menu{
+color:silver;
+font-family: sans-serif;
+text-decoration: none;
+}
+
+
+.copy{
+color:silver;
+font-family: sans-serif;
+
+}
+.articles{
+  color:silver;
+  font-family: sans-serif;
+
+  }
+  .address{
+    color:silver;
+    font-family: sans-serif;
+
+    }
+    .whatsapp a{
+      text-decoration: none;
+      color:white;
+      background-color:green;
+      border:2px solid green;
+    }
+    .whatsapp a:hover{
+      text-decoration: none;
+      color:silver
+    }
+
+
+
+  li{
+
+    list-style: none;
+  }
+
+
+li.menu-heading{
+font-weight: bolder;
+font-size: 1.2em;
+font-stretch: expanded;
+
+  }

@@ -1,0 +1,160 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="procesingModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-spinner fa-pulse"></i>Done!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="errorModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Picture</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Oops...there was an error. please try again.<br/>
+            <small> if the problem persists, it is likely that:<br/>
+               (1)there is no netowrk connection.<br/>
+               (2)That there is a problem with your installation in that case
+               please contact us at <a href="http://www.brytweb.com">Brytweb.com</a></small></h2>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <button id="back" class="btn btn-info">Go back</button>
+
+ <button id="apply" class="btn btn-primary" style="margin:20px;">Apply</button>
+
+<form name="publish" method="post" action="admin/cms/createpage.php">
+
+<input type="text" id="blogtitle" name="blogtitle" value="">
+<input type="hidden" id="Bcode" name="Bcode" value="c">
+
+<div id="editor"></div>
+
+
+
+
+</form>
+
+<input type="hidden" id="bx" name="bx" value="">
+</div>
+
+<div class="col-md-5">
+<div id="blogtitle"></div>
+  <button class="btn btn-primary" id="updateView">Update View</button>
+<div id="viewer" style="border:2px solid blue;width:100%;"></div>
+
+</div>
+</div>
+<script>
+
+  $('#updateView').click(2000,function(){
+
+document.getElementById('bx').value = document.getElementById('coder').value;
+
+var site = document.getElementById('bx').value;
+
+
+$('#viewer').html(site);
+
+
+  });
+  $('#back').click(2000,function(){
+var sites = document.getElementById('coder').value;
+var name = document.getElementById('blogtitle').value;
+
+    $("div#renderDiv").load('admin/cms/blog/createblog.html', 2000, function() {
+    // callback after load completes
+
+
+    $('#name').val(name);
+    $('#editor').html(sites);
+    });
+
+
+
+
+
+
+
+  });
+
+
+
+  $('#apply').click(function(){
+
+  document.getElementById('bx').value = document.getElementById('coder').innerHTML;
+
+    brytwebPublish();
+  });
+
+  function brytwebPublish()
+  {
+    //document.publish.submit();
+
+    $("#procesingModal").modal('show');
+
+
+    var name = document.getElementById('blogtitle').value;
+    var view = document.getElementById('coder').value;
+
+    $.post("admin/cms/portfolio/addproject.php",{name:name, view:view})
+    .done(function(data, status, xhr){
+    console.log('succes:' + data );
+    $("#procesingModal").modal('hide');
+    })
+    .fail(function(data, status, xhr){
+    // Runs on failure
+    console.log(data);
+    $("#procesingModal").modal('hide');
+     $("#errorModal").modal('show');
+    })
+    .always(function(data, status, xhr){
+    // Both success and failure
+    console.log(data);
+    });
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,122 @@
+<?php
+
+
+$title = $_POST['title'];
+$description = $_POST['description'];
+
+
+ $filename = "../../../index.html";
+  $file = fopen( $filename, "w" );
+  if( $file == false ) {
+    echo ( "Error in opening new file" );
+     exit();
+   }
+   fwrite( $file, '<html>
+   <head>
+
+ <meta name="description" content="'.$description.'">
+
+
+     <!-- include our libraries and css files -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="brytweb/bootstrap.css" rel="stylesheet">
+     <link href="brytweb/brytweb.css" rel="stylesheet">
+
+     <link href="brytweb/fonts/css/font-awesome.min.css" rel="stylesheet">
+
+     <title>'.$title.'</title>
+
+     </head>
+
+     <body>
+
+
+
+
+     <div id="header">
+
+     </div>
+
+
+          <div class="modal fade" tabindex="-1" role="dialog" id="subscribeModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Subscribe to stay up to date!</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+
+     <input type="text" id="name" placeholder="Your Name">
+     <input type="text" id="email" placeholder="Your Email">
+     <button  type="button" id="subscribe" class="btn btn-success">Subscribe</button>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+
+          <div class="modal fade" tabindex="-1" role="dialog" id="thanksModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Thank you for subscribing!</h4>
+                </div>
+                <div class="modal-body">
+                  <h1>Grab this bonus</h1>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+
+
+
+
+        <button id="subscribeShow" style="z-index:1;" class="btn btn-primary trolley">Subscribe</button>
+
+
+     <div id="body" style="padding:60px;">
+
+     </div>
+
+
+     <div id="footer">
+
+     </div>
+
+     <script src="brytweb/brytweb.js"></script>
+
+     </body>
+     </html>
+
+' );
+  fclose( $file );
+
+
+echo'
+
+<h3>Your page has been updated!</h3>
+
+';
+
+
+
+
+
+
+
+ ?>

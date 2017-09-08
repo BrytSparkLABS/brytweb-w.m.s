@@ -1,0 +1,251 @@
+
+
+<!-- start first footer-->
+
+
+
+<div style="width:100%">
+
+
+
+      <div class="footer basic foot">
+      <div class="articles">
+
+        <ul>
+          <li class="" onClick="home()">Home</li>
+          <li class="" onClick="about()">About</li>
+          <li class="" onClick="contact()">Contact</li>
+          <li class="" onClick="blog()">Blog</li>
+        </ul>
+
+      </div>
+      <div class="address">
+        <h5 class="menu-heading">Connect with us around the web</h5>
+        <span style="font-size:1.5em;">
+        <a href=""><i class="fa fa-facebook connect"></i></a>
+        <a href=""><i class="fa fa-instagram connect"></i></a>
+      <a href=""><i class="fa fa-youtube connect"></i></a>
+      <a href=""><i class="fa fa-linkedin connect"></i></a>
+      <a href=""><i class="fa fa-twitter connect"></i></a>
+      <a href=""><i class="fa fa-google-plus connect"></i></a>
+      <a href=""><i class="fa fa-github connect"></i></a></span>
+
+      </div>
+      <div class="gamma">
+
+        <ul>
+          <li class="menu-heading">Contact Us</li>
+
+      <a class="btn btn-primary" href="#" onclick="contact()"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+
+      </div>
+      <div class="search"></div>
+      <div class="epsilon"></div>
+      <div class="zeta"></div>
+      <div class="eta"></div>
+      <div class="copy">webname &copy; 2017</div>
+      </div>
+
+
+
+
+</div>
+
+<button id="footer1" class="btn btn-info">Apply</button>
+
+
+
+</label>
+
+
+<!-- start second header -->
+
+
+<div style="width:100%;border-top:2px solid black;">
+
+
+
+      <div class="footer basic foot">
+      <div class="articles">
+
+
+
+        <h5 class="menu-heading">Connect with us around the web</h5>
+        <span style="font-size:1.5em;">
+
+
+
+
+
+
+      </span>
+
+
+
+
+      </div>
+      <div class="address">
+
+        <ul>
+          <li class="menu-heading">Contact Us</li>
+
+        <a class="btn btn-primary" href="#" onclick="contact()"><i class="fa fa-envelope"></i></a></li>
+        </ul>
+
+
+      </div>
+      <div class="gamma">
+
+        <ul>
+          <li><a href="#" class="footer-menu" onClick="home()">Home</a></li>
+          <li><a href="#" class="footer-menu" onClick="about()">About</a></li>
+          <li><a href="#" class="footer-menu" onClick="contact()">Contact</a></li>
+          <li><a href="#" class="footer-menu" onClick="blog()">Blog</a></li>
+        </ul>
+
+
+      </div>
+      <div class="search"></div>
+      <div class="epsilon"></div>
+      <div class="zeta"></div>
+      <div class="eta"></div>
+      <div class="copy">websitename &copy; 2017</div>
+      </div>
+
+      </div>
+
+
+
+<button id="footer2" class="btn btn-info">Apply</button>
+</div>
+
+
+<!-- start custom header -->
+
+
+
+<div style="width:100%;border-top:2px solid black;">
+
+  <h3 style="text-decoration:underline;">Custom Footer</h3>
+  <button id="footer3" class="btn btn-info">Apply</button>
+<div class="col-md-12">
+
+
+  <textarea style='width:100%;height:20%' id='coder' name='coder'>Cutom footer code</textarea>
+
+
+</div>
+  <div class="col-md-12" style="padding-top:45px;">
+<button class="btn btn-primary" id="updateheaderView">Update View</button>
+
+  <div id="viewer" style="border:2px solid blue;width:100%;height:30%"></div>
+
+  </div>
+
+
+
+
+
+
+
+</div>
+<script>
+  var footerid = '';
+
+  var customfooter = '';
+
+
+
+$('#updateheaderView').click(2000,function(){
+
+var footer = document.getElementById('coder').value;
+
+
+
+$('#viewer').html(footer);
+
+
+});
+
+$('#footer1').click(2000,function(){
+
+footerid = 1;
+
+
+
+  $.post("admin/cms/footer/footer.php",{footerno: footerid})
+  .done(function(data, status, xhr){
+  console.log('succes:' + data );
+
+  })
+  .fail(function(data, status, xhr){
+  // Runs on failure
+  console.log(data);
+  })
+  .always(function(data, status, xhr){
+  // Both success and failure
+  console.log(data);
+  });
+
+
+
+  });
+
+
+  $('#footer2').click(2000,function(){
+
+    footerid = 2;
+
+    $.post("admin/cms/footer/footer.php",{footerno: footerid})
+    .done(function(data, status, xhr){
+    console.log('succes:' + data );
+
+    })
+    .fail(function(data, status, xhr){
+    // Runs on failure
+    console.log(data);
+    })
+    .always(function(data, status, xhr){
+    // Both success and failure
+    console.log(data);
+    });
+
+
+
+    });
+
+
+
+
+
+
+
+  $('#footer3').click(2000,function(){
+
+  footerid = 3;
+
+  customfooter = document.getElementById('coder').value;
+
+    $.post("admin/cms/footer/footer.php",{footerno: footerid, cfoot: customfooter})
+    .done(function(data, status, xhr){
+    console.log('succes:' + data );
+
+    })
+    .fail(function(data, status, xhr){
+    // Runs on failure
+    console.log(data);
+    })
+    .always(function(data, status, xhr){
+    // Both success and failure
+    console.log(data);
+    });
+
+    console.log(navigator);
+
+    });
+
+
+</script>
+
+</label>

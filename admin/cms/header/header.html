@@ -1,0 +1,274 @@
+<div class="modal fade" id="menuModal">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+<button type="button" class="close" id="menuclose" id="closeLogin">&times;</button>
+<div class="modal-title">
+  Menu
+</div>
+</div>
+
+<div class="modal-body">
+
+  <button id="home2" class="btn btn-success">Home</button>
+  <button id="about2" class="btn btn-success">About Us</button>
+  <button id="contact2" class="btn btn-success">Contact Us</button>
+  <a href="blog/index.html" class="btn btn-success">Blog</a>
+
+
+</div>
+
+<div class="modal-footer">
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<!-- start first header -->
+
+
+
+<div style="width:100%">
+
+
+
+
+
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-  -
+  target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <span class="sr-only">Toggle navigation</span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">Website name</a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="text-left">
+  <ul class="nav navbar-nav left-nav">
+
+  <li class="" id="home" onclick="home()">
+  <a>
+  Home
+  </a>
+  </li>
+
+  <li class="" id="about" onclick="about()">
+  <a>
+  About us
+  </a>
+  </li>
+
+  <li  class="" id="contact" onclick="contact()">
+    <a>
+  Contact us
+  </a>
+  </li>
+
+  <li  class="" id="contact" onclick="contact()">
+    <a>
+  Blog
+  </a>
+  </li>
+  </ul>
+  </div>
+
+  </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+
+
+
+
+</div>
+
+<button id="header1" class="btn btn-info">Apply</button>
+
+
+
+</label>
+
+
+<!-- start second header -->
+
+
+<div style="width:100%;border-top:2px solid black;">
+
+
+
+
+
+
+
+<h1>Website Name &nbsp;<a href="#" id="menu" class="btn btn-success btn-fixed-top">Menu</a></h1>
+
+
+
+<button id="header2" class="btn btn-info">Apply</button>
+</div>
+
+
+<!-- start custom header -->
+
+
+
+<div style="width:100%;border-top:2px solid black;">
+
+  <h3 style="text-decoration:underline;">Custom Header</h3>
+  <button id="header3" class="btn btn-info">Apply</button>
+<div class="col-md-12">
+
+
+  <textarea style='width:100%;height:20%' id='coder' name='coder'>Cutom header code</textarea>
+
+
+</div>
+  <div class="col-md-12" style="padding-top:45px;">
+<button class="btn btn-primary" id="updateheaderView">Update View</button>
+
+  <div id="viewer" style="border:2px solid blue;width:100%;height:30%"></div>
+
+  </div>
+
+<p>when making your custom header , you will need to add the onclick event
+listener to each of the links that you want pointing to:</p>
+
+<ul>
+
+
+  <li>your home page - onClick='home()'</li>
+<li>your about page- onClick='about()'</li>
+<li>your contact page- onClick='contact()'</li>
+<li>your blog index page- onClick='blog()'</li>
+
+
+</ul>
+
+
+
+</div>
+<script>
+  var headerid = '';
+
+  var customheader = '';
+
+
+
+
+
+$("#menu").click(function () {
+
+
+$('#menuModal').modal('show');
+
+
+
+});
+
+$('#updateheaderView').click(2000,function(){
+
+var header = document.getElementById('coder').value;
+
+console.log(header);
+
+$('#viewer').html(header);
+
+
+});
+
+$('#header1').click(2000,function(){
+
+headerid = 1;
+
+
+
+  $.post("admin/cms/header/header.php",{headerno: headerid})
+  .done(function(data, status, xhr){
+  console.log('succes:' + data );
+
+  })
+  .fail(function(data, status, xhr){
+  // Runs on failure
+  console.log(data);
+  })
+  .always(function(data, status, xhr){
+  // Both success and failure
+  console.log(data);
+  });
+
+
+
+  });
+
+
+  $('#header2').click(2000,function(){
+
+  headerid = 2;
+
+
+
+    $.post("admin/cms/header/header.php",{headerno: headerid})
+    .done(function(data, status, xhr){
+    console.log('succes:' + data );
+
+    })
+    .fail(function(data, status, xhr){
+    // Runs on failure
+    console.log(data);
+    })
+    .always(function(data, status, xhr){
+    // Both success and failure
+    console.log(data);
+    });
+
+
+
+    });
+
+
+
+
+
+
+
+  $('#header3').click(2000,function(){
+
+  headerid = 3;
+
+  customheader = document.getElementById('coder').value;
+
+    $.post("admin/cms/header/header.php",{headerno: headerid, chead: customheader})
+    .done(function(data, status, xhr){
+    console.log('succes:' + data );
+
+    })
+    .fail(function(data, status, xhr){
+    // Runs on failure
+    console.log(data);
+    })
+    .always(function(data, status, xhr){
+    // Both success and failure
+    console.log(data);
+    });
+
+    console.log(navigator);
+
+    });
+
+
+</script>
+
+</label>
