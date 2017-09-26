@@ -1,34 +1,57 @@
 <?php
 
-$page = 'pageViews'.$_POST['page'];
+$page = $_POST['page'];
+$language = $_POST['vlang'];
+$vbrowser = $_POST['vbrowser'];
+$os = $_POST['os'];
+$date = Date('yyyy/mm/dd');
+$route = $_POST['route'];
+$timeonsite = $_POST['timeonsite'];
+$ip_address = $_SERVER['REMOTE__ADDR'].$_SERVER['HTTP_HOST'];
+$country = $_POST['country'];
+$returnv = $_POST['returnv'];
 
 
-$os = 'OS'.$_POST['os'];
-
-include '../admin/cms/analytics/anadata.php';
-
-echo $page;
-echo $os;
+$year = $_POST['year'];
+$month = $_POST['month'];
+$dayofweek = $_POST['dayofweek'];
+$dayofweek = $_POST['dayofweek'];
 
 
-$analytics[$page] = $analytics[$page] + 1;
-$analytics[$os] = $analytics[$os] + 1;
+
+include '../admin/sql.php';
 
 
-$filename = "../admin/cms/analytics/anadata.php";
- $file = fopen( $filename, "w" );
- if( $file == false ) {
-   echo ( "Error in opening new file" );
-    exit();
-  }
-  fwrite( $file, '<?php
- $analytics["pageViewshomeland"] = '.$analytics["pageViewshomeland"].';
- $analytics["pageViewsabout"] = '.$analytics["pageViewsabout"].';
- $analytics["pageViewscontact"] = '.$analytics["pageViewscontact"].';
- $analytics["pageViewsblog"] = '.$analytics["pageViewsblog"].';
- $analytics["pageViewsstore"] = '.$analytics["pageViewsstore"].';
- $analytics["OSWindows"] = '.$analytics["OSWindows"].';
- $analytics["OSAndroid"] = '.$analytics["OSAndroid"].';
- ?>');
- fclose( $file );
+$sql="INSERT INTO brytweb_wms_analytics(returnVISITOR, page, os, browser, thedate, year, month, day, dayofweek, route, language, timeonsite, ip_address, country)
+
+VALUES
+($returnv, '$page','$os', '$vbrowser', '$date', '$year', '$month','$day','$dayofweek', '$route', '$language','$timeonsite', '$ip_address', '$country')";
+
+
+
+if (mysqli_query($con,$sql))
+
+{
+
+mysqli_close($con);
+
+}
+else {
+
+
+die('Error: ' . mysqli_error($con));
+
+}
+
+
+
+
+//mysqli_close($con);
+
+
+
+
+
+
+
  ?>

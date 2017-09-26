@@ -1,3 +1,16 @@
+<html>
+<head>
+
+  <!-- include our libraries and css files -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../brytweb/bootstrap.css" rel="stylesheet">
+  <link href="../brytweb/brytweb.css" rel="stylesheet">
+  <link href="../brytweb/fonts/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+
+
        <?php
 
 $webtype=$_POST['webtype'];
@@ -5,8 +18,11 @@ $site_name = $_POST['webname'];
 $site_street =$_POST['webstreet'];
 $site_town_city =$_POST['webtwncity'];
 $site_postal_code =$_POST['webpostalcode'];
-$admin_email =$_POST['admin_email'];
-$admin_hashcode =$_POST['admin_hashcode'];
+
+$admin_email = array('email' =>$_POST['admin_email'].$_POST['admin_email']);
+
+
+$admin_hashcode = password_hash($_POST['admin_hashcode'], PASSWORD_BCRYPT, $admin_email);
 
 
 
@@ -18,7 +34,8 @@ $admin_hashcode =$_POST['admin_hashcode'];
 
 if($webtype == 'blog'){
 
-  echo 'blog';
+  echo "<h1><i style='color:green' class='fa fa-server fa-pulse'>
+  </i><span style='color:#3377ff'> Building Your Blog Website</span></h1>";
 
   $filename = "../subscribe.php";
    $file = fopen( $filename, "w" );
@@ -142,7 +159,7 @@ if($webtype == 'blog'){
                     <h4 class="modal-title">Thank you for subscribing!</h4>
                   </div>
                   <div class="modal-body">
-                    <h1>Grab this bonus</h1>
+                    <h1>Thanks for subscribing,<br/><small> please remember to check your email regularly</small></h1>
 
                   </div>
                   <div class="modal-footer">
@@ -625,21 +642,7 @@ $filename = "cms/header/headersv.php";
 
         </ul>
         </div>
-        <div class="text-right">
 
-          <ul class="nav navbar-nav right-nav">
-
-          <li class="">
-          <a href="./" id="navigSignUp">
-          Signup
-          </a>
-        </li>
-
-
-
-
-       </ul>
-        </div>
         </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
         </nav>
@@ -1094,6 +1097,17 @@ if($github_profile_url != ""){
 
 else if($webtype == 'portfolio'){
 
+
+
+  echo "<h1><i style='color:green' class='fa fa-server fa-pulse'>
+  </i><span style='color:#3377ff'> Building Your Portfolio Website</span></h1>";
+
+
+
+
+
+
+
   $filename = "../subscribe.php";
    $file = fopen( $filename, "w" );
    if( $file == false ) {
@@ -1129,7 +1143,7 @@ else if($webtype == 'portfolio'){
 
 
 
-  echo 'portfolio';
+
 
   $filename = "../index.html";
    $file = fopen( $filename, "w" );
@@ -1187,9 +1201,7 @@ else if($webtype == 'portfolio'){
 
 
 
-$view = '
-
-<title>admin</title>
+$view = '<title>admin</title>
 
 </head>
 
@@ -1704,7 +1716,7 @@ if($github_profile_url != ""){
 
 else if($webtype == 'e-com'){
 
-  echo 'e-commerce';
+  echo "<h1><i style='color:green' class='fa fa-server fa-pulse'></i><span style='color:#3377ff'> Building Your e-Commerce Website</span></h1>";
 
   $filename = "../sale.php";
    $file = fopen( $filename, "w" );
@@ -1713,14 +1725,34 @@ else if($webtype == 'e-com'){
       exit();
     }
     fwrite( $file, '<?php
+$name = $_POST[\'name\'];
 
+$email = $_POST[\'email\'];
 
-  $to = '.$_POST["admin_email"].';
-  $subject = "New Website Subscription";
-  $message = "new website subscriber";
-  $message.= "name: ".$_POST["name"];
-  $message.= "email:".$_POST["email"];
-  $from = $_POST["email"];
+$phone = $_POST[\'phone\'];
+
+$street = $_POST[\'street\'];
+
+$suburb = $_POST[\'suburb\'];
+
+$postcode = $_POST[\'postcode\'];
+
+$order = $_POST[\'order\'];
+
+$total = $_POST[\'total\'];
+
+  $to = "tdreyer62@gmail.com";
+  $subject = "New Website Order";
+  $message = "new order";
+  $message.= "name: ".$name;
+  $message.= "phone:".$phone;
+$message.= "email:".$email;
+$message.= "street:".$street;
+$message.= "suburb: ".$suburb;
+$message.= "postal code:".$postcode;
+$message.= "order details:".$order;
+$message.= "order total:".$total;
+  $from = $email;
   $headers = "MIME-Version: 1.0" . "\r\n";
   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
   mail($to, $subject, $message, $from, $headers );
@@ -1731,10 +1763,10 @@ else if($webtype == 'e-com'){
 
 
 
-  $sql2="INSERT INTO brytweb_wms__blog_customers(name, email)
+  $sql2="INSERT INTO brytweb_wms__customers(name, email, telephone, purchase_history)
 
   VALUES
-  (\'$_POST[name]\',\'$_POST[email]\')";
+  (\'$name\',\'$email\',\'$phone\',\'$order\')";
 
 
   if (mysqli_query($con,$sql2))
@@ -1787,48 +1819,31 @@ else if($webtype == 'e-com'){
 
 
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="thanksModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-          <p>Thank you for your order</p>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="thanksModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Thank you for your order!</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h1>Thank you for your order</h1>
+                    <p>We\'ll contact you shortly to confirm your order</p>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
 
-
-
-
-  <div class="modal fade" tabindex="-1" role="dialog" id="appDownloadModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
 <div id="header">
 
@@ -1929,7 +1944,7 @@ Footer
 </button></p>
 
 
-<p>  <button id="footer" class="btn btn-lg btn-success"><i class="fa fa-connectdevelop"></i>
+<p>  <button id="styles" class="btn btn-lg btn-success"><i class="fa fa-connectdevelop"></i>
 Styles
 </button></p>
 
@@ -2018,10 +2033,9 @@ Website Analytics
 <option value="1">Home Page</option>
 <option value="2">About Us Page</option>
 <option value="3">Contact Us Page</option>
-<option value="4">Blog</option>
+
 <option value="5">Store</option>
-<option value="6">Portfolio</option>
-<option value="7">Gallery</option>
+
 </select>
 <button onclick="seeView()">Go</button>
 
@@ -2052,9 +2066,9 @@ Website Analytics
 
 <div class="modal-body">
 
-<p><button class="btn btn-success btn-lg"><i class="fa fa-wrench"></i>Settings
+<p><button id="settings" class="btn btn-success btn-lg"><i class="fa fa-wrench"></i>Settings
 </button></p>
-<p><button class="btn btn-info btn-lg"><i class="fa fa-envelope"></i>Marketing
+<p><button id="seo" class="btn btn-info btn-lg"><i class="fa fa-envelope"></i>SEO
 </button></p>
 
 <p><button id="analytics" class="btn btn-success btn-lg"><i class="fa fa-bar-chart"></i>Analytics
@@ -2275,7 +2289,7 @@ $filename = "cms/header/headersv.php";
 
          </div>
          </div>
-         <h1>\'.$webName .\' &nbsp;<button onclick="$(\'#menuModal\').modal(\'show\')" class="btn btn-success btn-fixed-top">Menu</button></h1>\';
+         <h1>\'.$webName .\' &nbsp;<button onclick="$(\\\'#menuModal\\\').modal(\\\'show\\\')" class="btn btn-success btn-fixed-top">Menu</button></h1>\';
 
 
 
@@ -2799,7 +2813,7 @@ $filename = "admin.php";
 
 
 
- $filename = "../admin.php";
+ $filename = "../".$_POST['admin-name'].".php";
   $file = fopen( $filename, "w" );
   if( $file == false ) {
     echo ( "Error in opening new file" );
@@ -2809,7 +2823,12 @@ $filename = "admin.php";
 
    <?php
    include \'admin/webmysql.php\';
-   if(isset($_POST[\'code\']) && $_POST[\'code\'] == $hashero){
+
+
+
+
+
+   if (password_verify($_POST[\'code\'], $hashero)){
 
     ?>
    <html>
@@ -2848,7 +2867,7 @@ $filename = "admin.php";
        <div class="col-md-7">
        <h1>Welcome please login</h1>
        <form method="post" action="#">
-       <input type="text" name="user">
+       <input type="email" name="email">
        <input type="password" name="code">
        <input type="submit">
 
@@ -2937,13 +2956,41 @@ $filename = "admin.php";
      $sql2="INSERT INTO brytweb_wms_settings(site_name, site_street, site_town_city, site_postal_code, admin_email, admin_hashcode, facebook_app_id, facebook_profile, instagram_profile, youtube_profile, linkedin_profile, twitter_profile, google_plus_profile, github_profile)
 
      VALUES
-     ('$_POST[webname]','$_POST[webstreet]','$_POST[webtwncity]','$_POST[webpostalcode]','$_POST[admin_email]','$_POST[admin_hashcode]','$_POST[facebookapp]','$_POST[facebookp]','$_POST[instagramp]','$_POST[youtubep]','$_POST[linkedinp]','$_POST[twitterp]','$_POST[googleplusp]','$_POST[githubp]')";
+     ('$_POST[webname]','$_POST[webstreet]','$_POST[webtwncity]','$_POST[webpostalcode]','$_POST[admin_email]','$admin_hashcode','$_POST[facebookapp]','$_POST[facebookp]','$_POST[instagramp]','$_POST[youtubep]','$_POST[linkedinp]','$_POST[twitterp]','$_POST[googleplusp]','$_POST[githubp]')";
 
 
 
  if (mysqli_query($con,$sql2))
 
  {
+
+      // Create tables
+      $sql3="CREATE TABLE brytweb_wms_analytics (
+        id int(11) NOT NULL AUTO_INCREMENT,
+
+        returnVISITOR varchar(11) NOT NULL,
+        page varchar(120) NOT NULL,
+        os varchar(10) NOT NULL,
+        browser varchar(10) NOT NULL,
+        thedate varchar(12) NOT NULL,
+        year varchar(4) NOT NULL,
+
+        month varchar(2) NOT NULL,
+
+        day varchar(2) NOT NULL,
+
+        dayofweek varchar(2) NOT NULL,
+        route varchar(360) NOT NULL,
+        language varchar(11) NOT NULL,
+        timeonsite varchar(11) NOT NULL,
+        ip_address varchar(60) NOT NULL,
+        country varchar(20) NOT NULL,
+
+
+        PRIMARY KEY (id))";
+      // Execute query
+    }
+      if (mysqli_query($con,$sql3)) {
 
  mysqli_close($con);
 
@@ -2962,6 +3009,11 @@ else {
 
 }
 
+$admin = $_POST['admin-name'];
+
+header("Refresh: 10.0; URL=../$admin.php" );
 
 
  ?>
+</body>
+</html>

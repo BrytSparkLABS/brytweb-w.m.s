@@ -143,6 +143,12 @@ You will need to create an app at facebook developers. Once you have created the
 
       <p><label for="gbp">github profile url:<br/><input type="text" id="gbp" placeholder="github profile url" name="githubp"></p>
 
+<h4>Secure your site</h4>
+<p>please create a unique name for your admin page, you will go here when you
+log in to your admin panel. for example(http://www.yourwebsiteaddress.com/the-name-of-the-admin-page) </p>
+ <p><label for="admin-name">Create a unique name:<br/><input type="text" id="admin-name" placeholder="my-unique-admin-page" name="admin-name"></p>
+
+
 
 <p><input type="submit" class="btn btn-primary" value="Build"></p>
 

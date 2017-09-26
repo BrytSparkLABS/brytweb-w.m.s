@@ -32,7 +32,7 @@ if($github_profile_url != ""){
           <li class="" onClick="home()">Home</li>
           <li class="" onClick="about()">About</li>
           <li class="" onClick="contact()">Contact</li>
-          <li class=""><a href="store/">Store</a></li>
+          <li class="" onClick="blog()">Blog</li>
         </ul>
 
       </div>
@@ -59,7 +59,7 @@ if($github_profile_url != ""){
   <li>  <a class="btn btn-primary" href="#" onclick="contact()"><i class="fa fa-envelope"></i></a>
 
 <li>71 Mare Street</li>
-<li>Randfontein</li>
+<li>roodepoort</li>
 <li>1724</li>
 
 
@@ -102,7 +102,7 @@ if($github_profile_url != ""){
   <li>  <a class="btn btn-primary" href="#" onclick="contact()"><i class="fa fa-envelope"></i></a>
 
 <li>71 Mare Street</li>
-<li>Randfontein</li>
+<li>roodepoort</li>
 <li>1724</li>
 
 
@@ -116,7 +116,7 @@ if($github_profile_url != ""){
           <li><a href="#" class="footer-menu" onClick="home()">Home</a></li>
           <li><a href="#" class="footer-menu" onClick="about()">About</a></li>
           <li><a href="#" class="footer-menu" onClick="contact()">Contact</a></li>
-          <li><a href="store/" class="footer-menu" >Store</a></li>
+          <li><a href="#" class="footer-menu" onClick="blog()">Blog</a></li>
         </ul>
 
 
@@ -138,7 +138,7 @@ if($github_profile_url != ""){
       <li><a href="./"  class="navigHome2">Home</a></li>
       <li><a href="./"  class="navigAbout2">About</a></li>
       <li><a href="./"  class="navigContact2">Contact</a></li>
-      <li><a href="./"  class="navigStore2">Store</a></li>
+      <li><a href="./"  class="navigBlog2">Blog</a></li>
       </ul>
 
     </div>
@@ -162,7 +162,7 @@ if($github_profile_url != ""){
 <li>  <a href="./"  class="navigContact2"><i class="fa fa-envelope"></i></a>
 
 <li>71 Mare Street</li>
-<li>Randfontein</li>
+<li>roodepoort</li>
 <li>1724</li>
 
 
@@ -244,7 +244,7 @@ if($github_profile_url != ""){
 <li>  <a href="./"  class="navigContact2"><i class="fa fa-envelope"></i></a>
 
 <li>71 Mare Street</li>
-<li>Randfontein</li>
+<li>roodepoort</li>
 <li>1724</li>
 
 
@@ -258,7 +258,7 @@ if($github_profile_url != ""){
       <li><a href="./"  class="navigHome2">Home</a></li>
       <li><a href="./"  class="navigAbout2">About</a></li>
       <li><a href="./"  class="navigContact2">Contact</a></li>
-      <li><a href="./"  class="navigStore2">Store</a></li>
+      <li><a href="./"  class="navigBlog2">Blog</a></li>
       </ul>
 
 

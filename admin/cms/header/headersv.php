@@ -20,7 +20,7 @@
       <li class="" id="home" onclick="home()"><a>Home</a></li>
       <li class="" id="about" onclick="about()"><a>About us</a>
       <li  class="" id="contact" onclick="contact()"><a>Contact us</a>
-      <li  class="" id="store" onclick="store()"><a>Shop</a>
+      <li  class="" id="blog" onclick="blog()"><a>Our Blog</a>
 
 
          </ul>
@@ -53,7 +53,7 @@
       <li class="" id="home" onclick="home()" data-dismiss="modal"><a>Home</a></li>
       <li class="" id="about" onclick="about()" data-dismiss="modal"><a>About us</a></li>
       <li  class="" id="contact" onclick="contact()" data-dismiss="modal"><a>Contact us</a></li>
-      <li  class="" id="store" onclick="store()" data-dismiss="modal"><a>Shop</a></li>
+      <li  class="" id="blog" onclick="blog()" data-dismiss="modal"><a>Our Blog</a></li>
 
         </ul>
 
@@ -70,9 +70,7 @@
 
 
 
-    $header3 =
-
-    '<nav class="navbar navbar-default">
+    $header3 =  '<nav class="navbar navbar-default">
         <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -90,33 +88,33 @@
         <ul class="nav navbar-nav left-nav">
 
         <li>
-        <a class="navigHome2" href="../">
+        <a class="navigHome2" href="./">
         Home
         </a>
         </li>
 
         <li>
-        <a id="navigAbout2" href="../">
+        <a id="navigAbout2" href="./">
         About us
         </a>
         </li>
 
         <li>
-          <a href="../" id="navigContact2">
+          <a href="./" id="navigContact2">
         Contact us
         </a>
         </li>
 
         <li>
-          <a href="../" id="navigStore2">
-        Store
+          <a href="./" id="navigBlog2">
+        Our Blog
         </a>
         </li>
 
 
         </ul>
         </div>
-
+      
         </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
         </nav>
@@ -124,7 +122,7 @@
          <script>
 
 
-         $("#navigStore2").click(function(){
+         $("#navigBlog2").click(function(){
 
       sessionStorage.clear();
 
@@ -179,10 +177,10 @@
 
       <ul class="nav nav-pills left-nav">
 
-      <li><a href="../" class="navigHome2">Home</a></li>
-      <li><a href="../" id="navigAbout2">About us</a></li>
-      <li><a href="../" id="navigContact2">Contact us</a></li>
-      <li><a href="../" id="navigStore2">Shop</a></li>
+      <li><a href="./" class="navigHome2">Home</a></li>
+      <li><a href="./" id="navigAbout2">About us</a></li>
+      <li><a href="./" id="navigContact2">Contact us</a></li>
+      <li><a href="./" id="navigBlog2">Our Blog</a></li>
 
       </ul>
 
@@ -200,12 +198,12 @@
       <script>
 
 
-     $("#navigStore2").click(function(){
+     $("#navigBlog2").click(function(){
 
     sessionStorage.clear();
 
 
-     sessionStorage.navi = "store/index.html";
+     sessionStorage.navi = "blogindex.html";
 
      });
 
@@ -233,4 +231,5 @@
      });
 
      </script>';
+
        ?>

@@ -1,12 +1,5 @@
 
 
-
-<title>admin</title>
-
-</head>
-
-<body>
-
 <div class="container">
 
 <div class="modal fade" tabindex="-1" role="dialog" id="processingModal">
@@ -54,7 +47,7 @@ Footer
 </button></p>
 
 
-<p>  <button id="footer" class="btn btn-lg btn-success"><i class="fa fa-connectdevelop"></i>
+<p>  <button id="styles" class="btn btn-lg btn-success"><i class="fa fa-connectdevelop"></i>
 Styles
 </button></p>
 
@@ -98,13 +91,11 @@ Styles
   About Us Page
 </button></p>
 
-<p>  <button id="contact" class="btn btn-lg btn-success"><i class="fa fa-pencil"></i>
-  Contact Us Page
+<p><button id="blogAdmin" class="btn btn-lg btn-success"><i class="fa fa-pencil"></i>
+Create blog
 </button></p>
 
-<p><button id="storeAdmin" class="btn btn-lg btn-success"><i class="fa fa-wrench"></i>
-Online Store
-</button></p>
+
 
 
 
@@ -144,9 +135,7 @@ Website Analytics
 <option value="2">About Us Page</option>
 <option value="3">Contact Us Page</option>
 <option value="4">Blog</option>
-<option value="5">Store</option>
-<option value="6">Portfolio</option>
-<option value="7">Gallery</option>
+
 </select>
 <button onclick="seeView()">Go</button>
 
@@ -177,9 +166,9 @@ Website Analytics
 
 <div class="modal-body">
 
-<p><button class="btn btn-success btn-lg"><i class="fa fa-wrench"></i>Settings
+<p><button id="settings" class="btn btn-success btn-lg"><i class="fa fa-wrench"></i>Settings
 </button></p>
-<p><button class="btn btn-info btn-lg"><i class="fa fa-envelope"></i>Marketing
+<p><button id="seo" class="btn btn-info btn-lg"><i class="fa fa-envelope"></i>S.E.O
 </button></p>
 
 <p><button id="analytics" class="btn btn-success btn-lg"><i class="fa fa-bar-chart"></i>Analytics
@@ -238,10 +227,3 @@ Website Analytics
 </div>
 <script src="brytweb/brytweb.js"></script>
 <script src="admin/admin.js"></script>
-
-</body>
-</html>
-
-
-
-

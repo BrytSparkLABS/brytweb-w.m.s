@@ -55,8 +55,7 @@ if($footer === '1'){
     }
     fwrite( $file, $footer1 );
    fclose( $file );
-}
-if($header === '1'){
+
    $filename = "../../../footer/foot2.html";
     $file = fopen( $filename, "w+" );
     if( $file == false ) {
@@ -80,8 +79,7 @@ else if ($footer === '2') {
       fwrite( $file, $footer2 );
       fclose( $file );
 
-}
-else if ($footer === '2') {
+
       $filename = "../../../footer/foot2.html";
        $file = fopen( $filename, "w+" );
        if( $file == false ) {
@@ -108,7 +106,7 @@ $filename = "../../../footer/foot.html";
       fwrite( $file, $custom );
       fclose( $file );
 
-}
+
 
 $filename = "../../../footer/foot2.html";
  $file = fopen( $filename, "w+" );
@@ -119,7 +117,7 @@ $filename = "../../../footer/foot2.html";
   fwrite( $file, $footer3 );
   fclose( $file );
 
-
+}
 
 
 ?>

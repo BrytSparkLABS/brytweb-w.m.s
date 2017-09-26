@@ -150,8 +150,6 @@ $title = $title.'.html';
 
    include '../../sql.php';
 
-
-
    $sql="INSERT INTO brytweb_wms_blog(page,title, article)
 
    VALUES

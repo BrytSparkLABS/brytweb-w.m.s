@@ -1,7 +1,7 @@
 <?php
   include 'sql.php';
 
-    $result = mysqli_query($con,"SELECT * FROM brytweb_wms_settings");
+    $result = mysqli_query($con,"SELECT admin_hashcode FROM brytweb_wms_settings");
 
 
     while($row = mysqli_fetch_array($result))

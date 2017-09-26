@@ -13,10 +13,10 @@
 
 <div class="modal-body">
 
-  <button id="home2" class="btn btn-success">Home</button>
-  <button id="about2" class="btn btn-success">About Us</button>
-  <button id="contact2" class="btn btn-success">Contact Us</button>
-  <a href="blog/index.html" class="btn btn-success">Blog</a>
+  <button class="btn btn-success">Home</button>
+  <button class="btn btn-success">About Us</button>
+  <button class="btn btn-success">Contact Us</button>
+  <a href="#" class="btn btn-success">Blog</a>
 
 
 </div>
@@ -97,21 +97,10 @@
 
 <button id="header1" class="btn btn-info">Apply</button>
 
-
-
-</label>
-
-
 <!-- start second header -->
 
 
 <div style="width:100%;border-top:2px solid black;">
-
-
-
-
-
-
 
 <h1>Website Name &nbsp;<a href="#" id="menu" class="btn btn-success btn-fixed-top">Menu</a></h1>
 
@@ -160,6 +149,13 @@ listener to each of the links that you want pointing to:</p>
 
 
 </div>
+
+
+
+
+
+
+
 <script>
   var headerid = '';
 
@@ -193,8 +189,6 @@ $('#header1').click(2000,function(){
 
 headerid = 1;
 
-
-
   $.post("admin/cms/header/header.php",{headerno: headerid})
   .done(function(data, status, xhr){
   console.log('succes:' + data );
@@ -208,17 +202,12 @@ headerid = 1;
   // Both success and failure
   console.log(data);
   });
-
-
-
   });
 
 
   $('#header2').click(2000,function(){
 
   headerid = 2;
-
-
 
     $.post("admin/cms/header/header.php",{headerno: headerid})
     .done(function(data, status, xhr){
@@ -233,9 +222,6 @@ headerid = 1;
     // Both success and failure
     console.log(data);
     });
-
-
-
     });
 
 
@@ -247,7 +233,6 @@ headerid = 1;
   $('#header3').click(2000,function(){
 
   headerid = 3;
-
   customheader = document.getElementById('coder').value;
 
     $.post("admin/cms/header/header.php",{headerno: headerid, chead: customheader})
@@ -270,5 +255,3 @@ headerid = 1;
 
 
 </script>
-
-</label>
