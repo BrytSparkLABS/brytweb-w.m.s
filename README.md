@@ -10,11 +10,9 @@ To get started:
 
 2. upload to your webhost
 
-3. goto www.yourwebsite.com/admin.php 
-(for security once you've finished setup you should change the file admin.php to another name
-such as yoursecrect.php).
+3. go to http://www.yourwebsite.com/admin.php 
 
-4. once you've added your info and selected which type of website you'd like to build:
+4. Add your info and selected which type of website you'd like to build:
 
 *Portfolio website to showcase your projects.
 
@@ -23,7 +21,7 @@ such as yoursecrect.php).
 *eCommerce website to sell your goods/services from.
 
 
-5.once setup completes you can navigate to www.yourwebsite.com/admin.php or to
+5.once setup completes you can navigate to www.yourwebsite.com/THE-UNIQUE-ADMIN-PAGE.php or to
  what ever you changed admin.php to and login.
 
 

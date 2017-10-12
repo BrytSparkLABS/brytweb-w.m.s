@@ -435,7 +435,7 @@ Website Analytics
 </div>
 <script src="brytweb/brytweb.js"></script>
 <script src="admin/admin.js"></script>
-
+<script src="admin/cms/analytics/Chart.js"></script>
 </body>
 </html>
 
@@ -1434,7 +1434,7 @@ Website Analytics
 </div>
 <script src="brytweb/brytweb.js"></script>
 <script src="admin/admin.js"></script>
-
+<script src="admin/cms/analytics/Chart.js"></script>
 </body>
 </html>';
 
@@ -2127,7 +2127,7 @@ Website Analytics
 </div>
 <script src="brytweb/brytweb.js"></script>
 <script src="admin/admin.js"></script>
-
+<script src="admin/cms/analytics/Chart.js"></script>
 </body>
 </html>
 
