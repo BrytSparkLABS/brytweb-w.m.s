@@ -24,6 +24,3 @@ To get started:
 5.once setup completes you can navigate to www.yourwebsite.com/THE-UNIQUE-ADMIN-PAGE.php or to
  what ever you changed admin.php to and login.
 
-
-if you need any help visit:
-http://www.brytweb.com
